@@ -26,10 +26,11 @@ function App() {
   let handleClose = (tareas, tarea) => {
     let tareasFiltradas = tareas.filter((nombre) => nombre !== tarea)
     setTareas(tareasFiltradas)
+    localStorage.setItem("tareas", JSON.stringify(tareasFiltradas))
   }
 
   useEffect(() => {
-    const tareasLS = JSON.parse(localStorage.getItem("tareas"))
+    const tareasLS = JSON.parse(localStorage.getItem("tareas")) || []
     setTareas(tareasLS)
   },[])
 
